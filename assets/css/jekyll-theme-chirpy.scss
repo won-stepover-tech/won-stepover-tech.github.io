@@ -3,14 +3,55 @@
 
 @import 'main';
 
-/* 1. 본문 줄간격을 살짝 넓혀 가독성 확보 */
+/* 1. 다크 모드 컬러 팔레트 커스텀 (깔끔한 딥 슬레이트 & 오렌지 포인트) */
+html[data-mode="dark"],
+html:not([data-mode]) {
+  --main-bg: #121417;           /* 본문 배경: 눈이 편한 깊은 다크 그레이 */
+  --sidebar-bg: #181b20;        /* 좌측 사이드바 배경 */
+  --card-bg: #181b20;           /* 포스트 카드 배경 */
+  --text-color: #e2e8f0;        /* 본문 기본 텍스트 */
+  --heading-color: #ffffff;     /* 제목 텍스트 */
+  --link-color: #ff7b00;        /* 링크 및 포인트 컬러 */
+  --toc-highlight: #ff7b00;     /* 우측 목차 활성화 컬러 */
+  --btn-border-color: #2d323b;
+}
+
+/* 2. 전체 폰트 및 본문 가독성 최적화 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+  letter-spacing: -0.01em;
+}
+
 .content {
-  line-height: 1.8;
+  line-height: 1.85;
   font-size: 1.02rem;
 }
 
-/* 2. 코드 블록을 깔끔한 고정폭 폰트로 지정 */
-code, pre {
-  font-family: 'JetBrains Mono', 'D2Coding', monospace !important;
-  font-size: 0.92rem;
+/* 3. 제목(Heading) 간격 및 구분선 정리 */
+.content h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #262930;
+}
+
+.content h3 {
+  margin-top: 1.8rem;
+}
+
+/* 4. 코드 블록 폰트 및 둥근 모서리 처리 */
+code, pre, .highlight {
+  font-family: 'JetBrains Mono', 'D2Coding', Consolas, monospace !important;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+/* 5. 불필요한 그림자 제거 및 미니멀한 카드 테두리 */
+#post-list .card {
+  border: 1px solid #22262e;
+  box-shadow: none !important;
+  transition: border-color 0.2s ease;
+}
+
+#post-list .card:hover {
+  border-color: #ff7b00;
 }
